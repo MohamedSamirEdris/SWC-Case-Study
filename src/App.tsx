@@ -8,16 +8,17 @@ export interface WeatherData {
   description: string;
   iconURL: string;
   temp: number;
-  feels_like: string;
-  temp_min: string;
-  temp_max: string;
-  pressure: string;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
+  pressure: number;
   deg: string;
   humidity: string;
-  speed: string;
+  speed: number;
   country: string;
   name: string;
 }
+
 function App() {
   const [city, setCity] = useState('cairo');
   const [weather, setWeather] = useState<WeatherData | null>(null);
@@ -37,7 +38,7 @@ function App() {
     fetchWeatherData();
   }, [units, city]);
 
-  const handleUnitsClick = (e: any) => {
+  const handleUnitsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
     const currentUnit = button.innerText.slice(1);
 
@@ -45,10 +46,10 @@ function App() {
     button.innerText = isCelsius ? '°F' : '°C';
     setUnits(isCelsius ? 'metric' : 'imperial');
   };
-
-  const enterKeyPressed = (e: any) => {
+  const enterKeyPressed = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13) {
-      setCity(e.target.value);
+      const inputElement = e.currentTarget as HTMLInputElement;
+      setCity(inputElement.value);
     }
   };
   return (

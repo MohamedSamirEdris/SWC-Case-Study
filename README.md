@@ -1,27 +1,43 @@
-# React + TypeScript + Vite
+# Weather forcast app using openWeatherApi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project build using react vite typescript boilerplate.
 
-Currently, two official plugins are available:
+It's a very simple POC implement in simple structure.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ 
 
-## Expanding the ESLint configuration
+## How to Use
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Clone or download repo
+NodeJS / NPM / Yarn should be installed in your PC
 
-- Configure the top-level `parserOptions` property like this:
+Open terminal or Git for Windows (Git Bash)
+Run these commands:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Install Dependencies
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+yarn add/install 
+
+OR
+
+npm install
+
+### Run app
+
+yarn dev
+
+OR
+
+npm run dev
+
+### Build locally
+
+npm run build
+
+OR
+
+yarn build
+
+### Deployed 
+
+
