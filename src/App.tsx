@@ -20,23 +20,11 @@ export interface WeatherData {
 }
 
 function App() {
-  const [city, setCity] = useState('cairo');
+  const [location, setLocation] = useState('cairo');
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [units, setUnits] = useState('metric');
   const [bg, setBg] = useState(hotBg);
-
-  useEffect(() => {
-    const fetchWeatherData = async () => {
-      const data = await getFormattedWeatherData(city, units);
-      setWeather(data);
-
-      const threshold = units === 'metric' ? 20 : 60;
-      if (data.temp <= threshold) setBg(coldBg);
-      else setBg(hotBg);
-    };
-
-    fetchWeatherData();
-  }, [units, city]);
+  const [error, setError] = useState<string | null>(null);
 
   const handleUnitsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
@@ -49,9 +37,30 @@ function App() {
   const enterKeyPressed = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13) {
       const inputElement = e.currentTarget as HTMLInputElement;
-      setCity(inputElement.value);
+      setLocation(inputElement.value);
     }
   };
+
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      try {
+        const data = await getFormattedWeatherData(location, units);
+        setWeather(data);
+
+        const threshold = units === 'metric' ? 20 : 60;
+        if (data.temp <= threshold) setBg(coldBg);
+        else setBg(hotBg);
+
+        setError(null);
+      } catch (error) {
+        setError(
+          'Error fetching weather data. Please check the city name and try again.'
+        );
+      }
+    };
+
+    fetchWeatherData();
+  }, [units, location]);
   return (
     <div className="app" style={{ backgroundImage: `url(${bg})` }}>
       <div className="overlay">
@@ -61,8 +70,8 @@ function App() {
               <input
                 onKeyDown={enterKeyPressed}
                 type="text"
-                name="city"
-                placeholder="Enter City..."
+                name="location" 
+                placeholder="Enter City or Zip Code or coordinates..." 
               />
               <button onClick={(e) => handleUnitsClick(e)}>°F</button>
             </div>
@@ -76,7 +85,8 @@ function App() {
                 <h1>{`${weather.temp.toFixed()} °${
                   units === 'metric' ? 'C' : 'F'
                 }`}</h1>
-              </div>{' '}
+              </div>
+              {error && <div className="error">{error}</div>}
             </div>
 
             {/* bottom description */}

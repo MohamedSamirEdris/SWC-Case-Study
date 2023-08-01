@@ -5,10 +5,10 @@ const makeIconURL = (iconId: string) =>
   `https://openweathermap.org/img/wn/${iconId}@2x.png`;
 
 export const getFormattedWeatherData = async (
-  city: string,
+  location: string,
   units = 'metric'
 ) => {
-  const requestURL = `${baseUrl}/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  const requestURL = `${baseUrl}/data/2.5/weather?q=${location}&appid=${apiKey}&units=${units}`;
 
   const data = await fetch(requestURL)
     .then((res) => res.json())

@@ -38,6 +38,10 @@ OR
 
 yarn build
 
-### Deployed 
+### Deployed on Netlify
+
+
+
+
 
 
