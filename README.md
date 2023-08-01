@@ -38,7 +38,9 @@ OR
 
 yarn build
 
-### Deployed on Netlify
+### Deployed on Github Pages
+
+https://mohamedsamiredris.github.io/SWC-Case-Study/
 
 
 
