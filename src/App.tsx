@@ -4,9 +4,23 @@ import coldBg from './assets/images/cold.jpg';
 import Description from './component/description /Description';
 import { getFormattedWeatherData } from './services/weather.service';
 
+export interface WeatherData {
+  description: string;
+  iconURL: string;
+  temp: number;
+  feels_like: string;
+  temp_min: string;
+  temp_max: string;
+  pressure: string;
+  deg: string;
+  humidity: string;
+  speed: string;
+  country: string;
+  name: string;
+}
 function App() {
   const [city, setCity] = useState('cairo');
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState<WeatherData | null>(null);
   const [units, setUnits] = useState('metric');
   const [bg, setBg] = useState(hotBg);
 

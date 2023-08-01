@@ -3,8 +3,9 @@ import { BiHappy } from 'react-icons/bi';
 import { MdCompress, MdOutlineWaterDrop } from 'react-icons/md';
 
 import './description.css';
+import { WeatherData } from '../../App';
 interface IDescription {
-  weather: string;
+  weather: WeatherData | null;
   units: string;
 }
 const Description = ({ weather, units }: IDescription) => {
@@ -16,42 +17,42 @@ const Description = ({ weather, units }: IDescription) => {
       id: 1,
       icon: <FaArrowDown />,
       title: 'min',
-      data: weather.temp_min.toFixed(),
+      data: weather?.temp_min.toFixed(),
       unit: tempUnit,
     },
     {
       id: 2,
       icon: <FaArrowDown />,
       title: 'max',
-      data: weather.temp_max.toFixed(),
+      data: weather?.temp_max.toFixed(),
       unit: tempUnit,
     },
     {
       id: 3,
       icon: <BiHappy />,
       title: 'feels like',
-      data: weather.feels_like.toFixed(),
+      data: weather?.feels_like.toFixed(),
       unit: tempUnit,
     },
     {
       id: 4,
       icon: <MdCompress />,
       title: 'pressure',
-      data: weather.pressure,
+      data: weather?.pressure,
       unit: 'hpa',
     },
     {
       id: 5,
       icon: <MdOutlineWaterDrop />,
       title: 'humidity',
-      data: weather.humidity,
+      data: weather?.humidity,
       unit: '%',
     },
     {
       id: 6,
       icon: <FaWind />,
       title: 'pressure',
-      data: weather.speed.toFixed(),
+      data: weather?.speed.toFixed(),
       unit: windUnit,
     },
   ];
