@@ -40,7 +40,7 @@ yarn build
 
 ### Deployed on Github Pages
 
-https://mohamedsamiredris.github.io/SWC-Case-Study/
+https://swc-case-study-i6f5gawis-mohamedsamiredris.vercel.app/
 
 
 
